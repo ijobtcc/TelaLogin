@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-navbar color="roxo">
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+<script>
+  //Initialize Firebase
+  var config =
+  {
+  };
+  
+  firebase.initializeApp(config);
+  </script>
+
+<ion-content padding>
+		<form #form="ngForm" novalidate>
+
+
+  <ion-list>
+      <ion-item>
+          <ion-label stacked>E-mail*</ion-label>
+          <ion-input type="text" name="email" [(ngModel)]="user.email" #email="ngModel" required></ion-input>
+        </ion-item>
+        <ion-item *ngIf="email.errors && (email.dirty || email.touched)" class="text-danger">
+          O campo é obrigatório
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Senha*</ion-label>
+            <ion-input type="password" name="password" [(ngModel)]="user.password" #password="ngModel" required></ion-input>
+          </ion-item>
+          <ion-item *ngIf="password.errors && (password.dirty || password.touched)" class="text-danger">
+            O campo é obrigatório
+          </ion-item>
+  <!--<ion-content padding="true" class="has-header">
+
+    <h4 id="login-heading2" style="color:#000000;font-weight:400;">Email:</h4>
+
+    <form id="login-form1" class="list">
+      <label class="item item-input" id="login-input1">
+        <input type="text" placeholder="exemple@gmail.com">
+      </label>
+    </form>
+
+    <h4 id="login-heading3" style="color:#000000;font-weight:400;">Senha:</h4>
+
+    <form id="login-form2" class="list">
+      <label class="item item-input" id="login-input2">
+        <input type="password" placeholder="*********">
+      </label>
+    </form>
+
+    <form id="login-form5" class="list">
+      <div class="spacer" style="width: 300px; height: 29px;"></div>
+      <ion-checkbox id="login-checkbox2">Cliente</ion-checkbox>  Cliente
+      <div class="spacer" style="width: 300px; height: 29px;"></div>
+      <ion-checkbox id="login-checkbox3">Empresa</ion-checkbox>  Empresa
+    </form>-->
+  </ion-list>
+
+
+    <!--<button  [disabled]="!form.form.valid"(click)="signin" (click)= "goToMenuPage()">Logar</button>-->
+    <button ion-button block color="roxo" [disabled]="!form.form.valid"(click)="signIn()" >Logar</button>
+    
+      <p></p>
+    <button ion-button color="roxo" full id="BtnCadastrar" (click) = "goToOpcaoUsuarioPage()">Cadastrar</button>
+
+    <button ion-button color="roxo" block clear margin top (click)="ResetPassword()">
+      Esqueci minha senha!
+    </button>
+  </form>
+    </ion-content>
